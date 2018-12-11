@@ -59,8 +59,9 @@ const styles = theme => ({
   },
   }
   appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    backgroundColor: theme.palette.primary
+    zIndex: 9,
+    backgroundColor: theme.palette.primary,
+    opacity: 0.8
   },
   navLink: {
     textDecoration: 'none',
