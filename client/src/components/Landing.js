@@ -3,18 +3,12 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Background from '../assets/landing.jpg';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     minHeight: '92 vh',
-    backgroundImage: `url(${Background})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
     zIndex: 1,
-    overflow: 'hidden',
-    display: 'flex'
   },
   headerContainer: {
     minHeight: '90vh'
