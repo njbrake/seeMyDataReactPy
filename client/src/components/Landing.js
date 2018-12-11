@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -38,8 +39,15 @@ class Landing extends React.Component {
               align="center"
               className={classes.header}
             >
-              Welcome to Nate Brake's Web Application for Bito Robotics
+              Nate Brake
+              Web Application for Bito Robotics
             </Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <Button variant="raised" component={Link} to="/subpage1" >Subpage1 </Button>
+          </Grid>
+          <Grid item xs={6}>
+             <Button variant="raised" component={Link} to="/subpage2">Subpage2 </Button>
           </Grid>
         </Grid>
       </div>
