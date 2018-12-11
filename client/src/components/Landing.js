@@ -8,7 +8,7 @@ import Background from '../assets/landing.jpg';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    minHeight: '92vh',
+    minHeight: '92 vh',
     backgroundImage: `url(${Background})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
