@@ -19,6 +19,7 @@ import Subpage1 from './components/Subpage1';
 import Subpage2 from './components/Subpage2';
 
 import BitoLogo from './assets/BitoLogo';
+import Background from '../assets/landing.jpg';
 
 const theme = createMuiTheme({
   palette: {
@@ -39,6 +40,24 @@ const styles = theme => ({
     overflow: 'hidden',
     display: 'flex'
   },
+  backgroundImage: {
+    minHeight: ' 100vh',
+    background: `url(${Background}) center center`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    opacity: .4;
+    width: '100%'.
+    height: '100%',
+    zIndex: -1,
+    overflow: 'hidden',
+    display: 'flex'
+  },
+  }
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     backgroundColor: theme.palette.primary
@@ -77,6 +96,7 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <Router>
           <div className="App">
+            <div className={classes.backgroundImage} />
             <div className="wrapper">
               <div className={classes.root}>
                 <AppBar position="absolute" className={classes.appBar}>
