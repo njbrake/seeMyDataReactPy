@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
+
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+
 import Video from '../assets/landingVid.mp4';
+
 const styles = theme => ({
   landing: {
     position: 'absolute',
@@ -20,17 +24,15 @@ const styles = theme => ({
     width: '100%',
     zIndex: 1
   },
-
   headerContainer: {
     minHeight: '90vh'
   },
-
   header: {
     textAlign: 'center',
     color: 'white',
     fontWeight: 800,
     background: 'transparent',
-    opacity: '.9',
+    opacity: '.8',
     padding: '40px 20px 20px 20px',
     margin: '60px 30px 50px 30px',
     zIndex: '2'

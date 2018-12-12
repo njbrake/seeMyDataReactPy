@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Snackbar from '@material-ui/core/Snackbar';
-import CloseIcon from '@material-ui/icons/Close';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Switch from '@material-ui/core/Switch';
 import { withStyles } from '@material-ui/core/styles';
+
+import CloseIcon from '@material-ui/icons/Close';
+
 import Chart from './Chart';
 
 const styles = theme => ({
@@ -45,6 +48,7 @@ class Subpage1 extends React.Component {
     this.onRefresh = this.onRefresh.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
+  //Send request for data before Mounting
   componentWillMount() {
     axios
       .get('/random')
@@ -63,14 +67,17 @@ class Subpage1 extends React.Component {
       );
   }
 
+  //start the interval timer once component mounted
   componentDidMount() {
     this.interval = setInterval(e => this.onRefresh(e), 10000);
   }
 
+  //Clear out the timer before unmounting to avoid memory leak
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
+  //Handle toggling autoupdate
   handleSwitch = e => {
     if (!e.target.checked) {
       clearInterval(this.interval);
@@ -79,6 +86,8 @@ class Subpage1 extends React.Component {
     }
     this.setState({ autoUpdate: e.target.checked });
   };
+
+  //Close the snackbar
   handleClose(event, reason) {
     if (reason === 'clickaway') {
       return;
@@ -86,6 +95,7 @@ class Subpage1 extends React.Component {
     this.setState({ open: false, message: '' });
   }
 
+  //manual refresh
   onForceRefresh(e) {
     e.preventDefault();
     axios
@@ -104,6 +114,8 @@ class Subpage1 extends React.Component {
         this.setState({ open: true, message: 'There was an error' })
       );
   }
+
+  //Auto Refresh
   onRefresh() {
     const sendingData = this.state.data;
     axios
@@ -130,6 +142,8 @@ class Subpage1 extends React.Component {
         this.setState({ open: true, message: 'There was an error' })
       );
   }
+
+  //Manually save to Db1
   onDb1Save(e) {
     e.preventDefault();
     const sendingData = this.state.data;
@@ -142,6 +156,8 @@ class Subpage1 extends React.Component {
         this.setState({ open: true, message: 'There was an error' })
       );
   }
+
+  //Manually save to Db2
   onDb2Save(e) {
     e.preventDefault();
     const sendingData = this.state.data;
@@ -154,6 +170,7 @@ class Subpage1 extends React.Component {
         this.setState({ open: true, message: 'There was an error' })
       );
   }
+
   render() {
     const { classes } = this.props;
     const { data } = this.state;

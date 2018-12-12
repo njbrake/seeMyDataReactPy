@@ -22,10 +22,10 @@ import BitoLogo from './assets/BitoLogo';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#424242'
+      main: '#424242' //Slate Gray color
     },
     secondary: {
-      main: '#fdd835'
+      main: '#fdd835' //Yellow Color
     }
   },
   typography: {
@@ -61,9 +61,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    opacity: '1 !important',
-    //padding: theme.spacing.unit * 1,
-    minWidth: 0 // So the Typography noWrap works
+    minWidth: 0
   },
   toolbar: theme.mixins.toolbar
 });
@@ -71,9 +69,6 @@ const styles = theme => ({
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      activePage: null
-    };
     this.onChange = this.onChange.bind(this);
   }
   onChange(e, value) {
@@ -91,7 +86,6 @@ class App extends Component {
                   <Toolbar>
                     <BitoLogo />
                     <div className={classes.grow} />
-
                     <Button
                       component={Link}
                       to="/"
@@ -118,7 +112,6 @@ class App extends Component {
                     </Button>
                   </Toolbar>
                 </AppBar>
-
                 <main className={classes.content}>
                   <div className={classes.toolbar} />
                   <Route exact path="/" component={Landing} />

@@ -3,6 +3,7 @@ from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 app = Flask(__name__)
 
+# Config Keys
 app.config['MONGO_DBNAME'] = 'bitodb'
 app.config['MONGO_URI'] = 'mongodb://test:a12345@ds261332.mlab.com:61332/bitodb'
 
@@ -20,8 +21,8 @@ def get_random():
     rangeX = (0, 2000)  # range for x values
     rangeY = (0, 2000)  # range for y values
 
-    # generate between 0 and 2000 data points
-    qty = random.randrange(*(0, 100))
+    # Arbitrarily chose to generate between 30 and 110 data points
+    qty = random.randrange(*(30, 110))
     #qty = 10
     randPoints = []
     i = 0

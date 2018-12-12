@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Typography from '@material-ui/core/Typography';
+
 import Grid from '@material-ui/core/Grid';
 import Snackbar from '@material-ui/core/Snackbar';
-import CloseIcon from '@material-ui/icons/Close';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
+
+import CloseIcon from '@material-ui/icons/Close';
+
 import Chart from './Chart';
 
 const styles = theme => ({
@@ -28,6 +30,7 @@ const styles = theme => ({
     color: theme.palette.text.secondary
   }
 });
+
 class Subpage2 extends React.Component {
   constructor(props) {
     super(props);
@@ -41,16 +44,20 @@ class Subpage2 extends React.Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
+  //handle snackbar close
   handleClose(event, reason) {
     if (reason === 'clickaway') {
       return;
     }
     this.setState({ open: false, message: '' });
   }
+
+  //start with loading db2
   componentWillMount() {
-    this.loadDb1();
+    this.loadDb2();
   }
 
+  //manually load db1
   loadDb1() {
     axios
       .get('/database1')
@@ -58,16 +65,26 @@ class Subpage2 extends React.Component {
         res.data.result.sort(function(a, b) {
           return a.x - b.x;
         });
-        this.setState({
-          data: res.data.result,
-          open: true,
-          message: 'Loaded Database 1'
-        });
+        if (res.data.result.length > 100) {
+          this.setState({
+            data: res.data.result,
+            open: true,
+            message: 'Error: Over 100 Items Present in Data'
+          });
+        } else {
+          this.setState({
+            data: res.data.result,
+            open: true,
+            message: 'Loaded Database 1'
+          });
+        }
       })
       .catch(err =>
         this.setState({ open: true, message: 'There was an error' })
       );
   }
+
+  //manually load db2
   loadDb2() {
     axios
       .get('/database2')
@@ -75,11 +92,19 @@ class Subpage2 extends React.Component {
         res.data.result.sort(function(a, b) {
           return a.x - b.x;
         });
-        this.setState({
-          data: res.data.result,
-          open: true,
-          message: 'Loaded Database 2'
-        });
+        if (res.data.result.length > 100) {
+          this.setState({
+            data: res.data.result,
+            open: true,
+            message: 'Error: Over 100 Items Present in Data'
+          });
+        } else {
+          this.setState({
+            data: res.data.result,
+            open: true,
+            message: 'Loaded Database 2'
+          });
+        }
       })
       .catch(err =>
         this.setState({ open: true, message: 'There was an error' })
