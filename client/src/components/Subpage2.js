@@ -5,6 +5,7 @@ import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -125,25 +126,29 @@ class Subpage2 extends React.Component {
             className={classes.buttonContainer}
           >
             <Grid item xs={3}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={this.loadDb1}
-                fullWidth={true}
-              >
-                Load Database 1
-              </Button>
+              <Paper elevation={1}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={this.loadDb1}
+                  fullWidth={true}
+                >
+                  Load Database 1
+                </Button>
+              </Paper>
             </Grid>
             <Grid item xs={3} />
             <Grid item xs={3}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={this.loadDb2}
-                fullWidth={true}
-              >
-                Load Database 2
-              </Button>
+              <Paper elevation={1}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={this.loadDb2}
+                  fullWidth={true}
+                >
+                  Load Database 2
+                </Button>
+              </Paper>
             </Grid>
           </Grid>
           <Grid
@@ -155,7 +160,9 @@ class Subpage2 extends React.Component {
             className={classes.chartContainer}
           >
             <Grid>
-              <Chart data={data} />
+              <Paper elevation={1} className={classes.paper}>
+                <Chart data={data} />
+              </Paper>
             </Grid>
           </Grid>
           <Grid item xs={6} />

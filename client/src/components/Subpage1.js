@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
-import Switch from '@material-ui/core/Switch';
 import { withStyles } from '@material-ui/core/styles';
 
 import CloseIcon from '@material-ui/icons/Close';
 
 import Chart from './Chart';
+import Toggle from './Toggle';
 
 const styles = theme => ({
   root: {
@@ -187,7 +187,7 @@ class Subpage1 extends React.Component {
             <Grid item xs={3}>
               <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 onClick={this.onDb1Save}
                 fullWidth={true}
               >
@@ -197,7 +197,7 @@ class Subpage1 extends React.Component {
             <Grid item xs={3}>
               <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 onClick={this.onForceRefresh}
                 fullWidth={true}
               >
@@ -207,7 +207,7 @@ class Subpage1 extends React.Component {
             <Grid item xs={3}>
               <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 onClick={this.onDb2Save}
                 fullWidth={true}
               >
@@ -224,21 +224,19 @@ class Subpage1 extends React.Component {
             className={classes.chartContainer}
           >
             <Grid>
-              <Chart data={data} />
+              <Paper elevation={1} className={classes.paper}>
+                10 Second Auto Update {this.state.autoUpdate ? 'On' : 'Off'}
+                <Toggle
+                  autoUpdate={this.state.autoUpdate}
+                  handleSwitch={this.handleSwitch}
+                />
+                <Chart data={data} />
+              </Paper>
             </Grid>
           </Grid>
           <Grid item xs={3} />
           <Grid item xs={6} />
-          <Grid item xs={3}>
-            <Typography variant="p">
-              AutoUpdate {this.state.autoUpdate ? 'On' : 'Off'}
-            </Typography>
-            <Switch
-              checked={this.state.autoUpdate}
-              onChange={this.handleSwitch}
-              value="autoUpdate"
-            />
-          </Grid>
+          <Grid item xs={1} />
         </Grid>
         <Snackbar
           anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}

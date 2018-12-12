@@ -18,6 +18,7 @@ import Subpage1 from './components/Subpage1';
 import Subpage2 from './components/Subpage2';
 
 import BitoLogo from './assets/BitoLogo';
+import subpage from './assets/subpage.jpg';
 
 const theme = createMuiTheme({
   palette: {
@@ -38,7 +39,8 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     minHeight: '100vh',
-    backgroundColor: 'white',
+    backgroundImage: `url(${subpage})`,
+    backgroundSize: 'cover',
     overflow: 'hidden',
     display: 'flex',
     zIndex: -1
