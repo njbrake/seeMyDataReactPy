@@ -4,8 +4,8 @@ from flask_pymongo import PyMongo
 app = Flask(__name__)
 
 # Config Keys
-app.config['MONGO_DBNAME'] = 'bitodb'
-app.config['MONGO_URI'] = 'mongodb://test:a12345@ds261332.mlab.com:61332/bitodb'
+app.config['MONGO_DBNAME'] = ''
+app.config['MONGO_URI'] = ''
 
 mongo = PyMongo(app)
 
