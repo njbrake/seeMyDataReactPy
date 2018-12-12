@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import {
   withStyles,
@@ -11,15 +11,13 @@ import {
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
+import Button from '@material-ui/core/Button';
 
 import Landing from './components/Landing';
 import Subpage1 from './components/Subpage1';
 import Subpage2 from './components/Subpage2';
 
 import BitoLogo from './assets/BitoLogo';
-import Background from '../assets/landing.jpg';
 
 const theme = createMuiTheme({
   palette: {
@@ -27,8 +25,12 @@ const theme = createMuiTheme({
       main: '#424242'
     },
     secondary: {
-      main: '#fafafa'
+      main: '#fdd835'
     }
+  },
+  typography: {
+    fontFamily: "'Allerta', Helvetica, Arial, sans-serif",
+    textTransform: 'none'
   }
 });
 
@@ -36,44 +38,30 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     minHeight: '100vh',
-    zIndex: 1,
+    backgroundColor: 'white',
     overflow: 'hidden',
-    display: 'flex'
+    display: 'flex',
+    zIndex: -1
   },
-  backgroundImage: {
-    minHeight: ' 100vh',
-    background: `url(${Background}) center center`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    opacity: .4;
-    width: '100%'.
-    height: '100%',
-    zIndex: -1,
-    overflow: 'hidden',
-    display: 'flex'
-  },
-  }
   appBar: {
     zIndex: 9,
     backgroundColor: theme.palette.primary,
     opacity: 0.8
   },
   navLink: {
-    textDecoration: 'none',
-    color: 'white',
-    marginRight: '1vw',
-    fontSize: '20px'
+    marginRight: '20px',
+    padding: '1.2rem',
+    fontSize: '18px',
+    '&:hover': {
+      fontWeight: 600
+    }
   },
   grow: {
     flexGrow: 1
   },
   content: {
     flexGrow: 1,
+    opacity: '1 !important',
     //padding: theme.spacing.unit * 1,
     minWidth: 0 // So the Typography noWrap works
   },
@@ -97,7 +85,6 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <Router>
           <div className="App">
-            <div className={classes.backgroundImage} />
             <div className="wrapper">
               <div className={classes.root}>
                 <AppBar position="absolute" className={classes.appBar}>
@@ -105,34 +92,30 @@ class App extends Component {
                     <BitoLogo />
                     <div className={classes.grow} />
 
-                    <Tabs
-                      indicatorColor="secondary"
-                      centered={false}
-                      style={{ marginLeft: '1vw' }}
-                      value={this.state.activePage}
+                    <Button
+                      component={Link}
+                      to="/"
+                      color="inherit"
+                      className={classes.navLink}
                     >
-                      <NavLink to="/" className={classes.navLink}>
-                        <Tab
-                          label="Home"
-                          value={0}
-                          onChange={(e, value) => this.onChange(e, value)}
-                        />
-                      </NavLink>
-                      <NavLink to="/subpage1" className={classes.navLink}>
-                        <Tab
-                          label="Subpage 1"
-                          value={1}
-                          onChange={(e, value) => this.onChange(e, value)}
-                        />
-                      </NavLink>
-                      <NavLink to="/subpage2" className={classes.navLink}>
-                        <Tab
-                          label="Subpage 2"
-                          value={2}
-                          onChange={(e, value) => this.onChange(e, value)}
-                        />
-                      </NavLink>
-                    </Tabs>
+                      Home
+                    </Button>
+                    <Button
+                      component={Link}
+                      to="/subpage1"
+                      color="inherit"
+                      className={classes.navLink}
+                    >
+                      Subpage 1
+                    </Button>
+                    <Button
+                      component={Link}
+                      to="/subpage2"
+                      color="inherit"
+                      className={classes.navLink}
+                    >
+                      Subpage 2
+                    </Button>
                   </Toolbar>
                 </AppBar>
 
