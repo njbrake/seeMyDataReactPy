@@ -48,8 +48,9 @@ def add_data1():
         x = q['x']
         y = q['y']
         framework_id = framework.insert({'x': x, 'y': y})
-        output.append({'x': q['x'], 'y': q['y']})
+        output.append({'x': x, 'y': x})
     return jsonify({'result': output})
+
 
 # @route   POST request to /database2
 # @desc    post
@@ -66,7 +67,7 @@ def add_data2():
         y = q['y']
         framework_id = framework.insert({'x': x, 'y': y})
         new_framework = framework.find_one({'_id': framework_id})
-        output.append({'x': q['x'], 'y': q['y']})
+        output.append({'x': x, 'y': y})
     return jsonify({'result': output})
 
 
