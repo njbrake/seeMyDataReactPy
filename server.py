@@ -4,8 +4,8 @@ from flask_pymongo import PyMongo
 app = Flask(__name__)
 
 # Config Keys
-app.config['MONGO_DBNAME'] = ''
-app.config['MONGO_URI'] = ''
+app.config['MONGO_DBNAME'] = 'bitodb'
+app.config['MONGO_URI'] = 'mongodb://test:a12345@ds261332.mlab.com:61332/bitodb'
 
 mongo = PyMongo(app)
 
@@ -17,9 +17,9 @@ mongo = PyMongo(app)
 
 @app.route('/random', methods=['GET'])
 def get_random():
-
-    rangeX = (0, 2000)  # range for x values
-    rangeY = (0, 2000)  # range for y values
+    range = 2000
+    rangeX = (0, range)  # range for x values
+    rangeY = (0, range)  # range for y values
 
     # Arbitrarily chose to generate between 30 and 110 data points
     qty = random.randrange(*(30, 110))
@@ -48,21 +48,6 @@ def add_data1():
         x = q['x']
         y = q['y']
         framework_id = framework.insert({'x': x, 'y': y})
-        new_framework = framework.find_one({'_id': framework_id})
-        output.append({'x': q['x'], 'y': q['y']})
-    return jsonify({'result': output})
-
-
-# @route   GET request to /database1
-# @desc    post
-# @access  Public
-
-
-@app.route('/database1', methods=['GET'])
-def get_data1():
-    framework = mongo.db.database1
-    output = []
-    for q in framework.find():
         output.append({'x': q['x'], 'y': q['y']})
     return jsonify({'result': output})
 

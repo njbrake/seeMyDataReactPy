@@ -120,39 +120,6 @@ class Subpage2 extends React.Component {
         <Grid container spacing={24}>
           <Grid
             container
-            xs={12}
-            justify="space-around"
-            alignItems="center"
-            className={classes.buttonContainer}
-          >
-            <Grid item xs={3}>
-              <Paper elevation={1}>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={this.loadDb1}
-                  fullWidth={true}
-                >
-                  Load Database 1
-                </Button>
-              </Paper>
-            </Grid>
-            <Grid item xs={3} />
-            <Grid item xs={3}>
-              <Paper elevation={1}>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={this.loadDb2}
-                  fullWidth={true}
-                >
-                  Load Database 2
-                </Button>
-              </Paper>
-            </Grid>
-          </Grid>
-          <Grid
-            container
             item
             xs={12}
             justify="center"
@@ -165,31 +132,7 @@ class Subpage2 extends React.Component {
               </Paper>
             </Grid>
           </Grid>
-          <Grid item xs={6} />
-          <Grid item xs={6} />
-          <Grid item xs={3} />
-          <Grid item xs={6} />
-          <Grid item xs={3} />
         </Grid>
-        <Snackbar
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-          open={this.state.open}
-          autoHideDuration={1000}
-          onClose={this.handleClose}
-          ContentProps={{ 'aria-describedby': 'message-id' }}
-          message={<span id="message-id">{this.state.message}</span>}
-          action={[
-            <IconButton
-              key="close"
-              aria-label="Close"
-              color="inherit"
-              className={classes.close}
-              onClick={this.handleClose}
-            >
-              <CloseIcon />
-            </IconButton>
-          ]}
-        />
       </div>
     );
   }
